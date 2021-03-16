@@ -61,7 +61,6 @@ def isAnagram(s: str, t: str) -> bool:
 #5 is Palindrome
 
 
-s = "0P"
 
 
 def isPalindrome(s: str) -> bool:
@@ -71,17 +70,44 @@ def isPalindrome(s: str) -> bool:
     forwards,backwards = 0,-1
     if len(ss) == 1:
         return False
-    print(ss)
     while forwards < int(len(ss) / 2):
-        print(ss[forwards])
-        print(ss[backwards])
         if ss[forwards] != ss[backwards]:
             print('False')
             return False
         forwards += 1
         backwards -= 1
-    print('True')
     return True
 
 
-isPalindrome(s)
+#6 String to Integer
+s = '+-12'
+
+def myAtoi(s: str) -> int:
+    len_,ss,index,sent = len(s),[],0,'0'
+    for i, c in enumerate(s):
+        if  c.isalpha():
+            return 0
+        elif c == '-' or c == '+':
+            sent = c
+        elif c.isdigit():
+            index = i
+            break
+    for position in range(index,len_):
+        if  not s[position].isdigit():
+            break
+        else:
+            ss.append(s[position])
+    ss.insert(0,sent)
+    ss = int(''.join(ss))
+    if ss < -2147483648:
+        ss = -2147483648
+    if ss > 2147483648:
+        ss = 2147483648
+    print(ss)
+    return ss
+
+
+myAtoi(s)
+
+
+#
